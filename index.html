@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Моя Анкета — Викторина для друзей</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- HOME SCREEN -->
+    <section id="home" class="screen active">
+      <div class="home-content">
+        <div class="logo">💖</div>
+        <h1 class="title">моя анкета</h1>
+        <p class="subtitle">Создай свою анкету и отправь друзьям</p>
+        <button id="btn-create" class="btn-create">
+          <span class="plus">+</span>
+          <span class="btn-text">создать</span>
+        </button>
+        <p class="hint">Нажми, чтобы начать</p>
+      </div>
+      <div class="decor decor-1">🌸</div>
+      <div class="decor decor-2">✨</div>
+      <div class="decor decor-3">💕</div>
+    </section>
+
+    <!-- CREATE PROFILE SCREEN -->
+    <section id="create-profile" class="screen">
+      <div class="container">
+        <button class="btn-back" onclick="goTo('home')">← назад</button>
+        <h2 class="section-title">Расскажи о себе</h2>
+        
+        <div class="photo-upload">
+          <div class="photo-preview" id="photo-preview">
+            <span class="photo-placeholder">📷</span>
+          </div>
+          <label class="btn-photo" for="photo-input">Добавить фото</label>
+          <input type="file" id="photo-input" accept="image/*" hidden>
+        </div>
+
+        <div class="form-group">
+          <label>Имя</label>
+          <input type="text" id="input-name" placeholder="Как тебя зовут?" maxlength="30">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Возраст</label>
+            <input type="number" id="input-age" placeholder="18" min="1" max="120">
+          </div>
+          <div class="form-group">
+            <label>День рождения</label>
+            <input type="text" id="input-bday" placeholder="15 марта" maxlength="20">
+          </div>
+        </div>
+
+        <button class="btn-primary" id="btn-to-questions">Далее →</button>
+      </div>
+    </section>
+
+    <!-- QUESTIONS EDITOR SCREEN -->
+    <section id="questions-editor" class="screen">
+      <div class="container wide">
+        <button class="btn-back" onclick="goTo('create-profile')">← назад</button>
+        <h2 class="section-title">Твои вопросы</h2>
+        <p class="section-desc">Можешь изменить вопросы и добавить варианты ответов, чтобы друзья запутались 😉</p>
+        
+        <div id="questions-list"></div>
+
+        <div class="editor-actions">
+          <button class="btn-secondary" id="btn-add-question">+ Добавить вопрос</button>
+          <button class="btn-primary" id="btn-save-quiz">Сохранить и получить ссылку 💕</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHARE SCREEN -->
+    <section id="share" class="screen">
+      <div class="container">
+        <div class="share-card">
+          <div class="share-emoji">🎉</div>
+          <h2>Анкета готова!</h2>
+          <p>Отправь эту ссылку друзьям:</p>
+          <div class="share-link-box">
+            <input type="text" id="share-link" readonly>
+            <button class="btn-copy" id="btn-copy">Копировать</button>
+          </div>
+          <button class="btn-primary" id="btn-preview">Посмотреть как друг →</button>
+          <button class="btn-secondary" onclick="goTo('home')">На главную</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAKE QUIZ SCREEN -->
+    <section id="take-quiz" class="screen">
+      <div class="container">
+        <div class="quiz-header">
+          <div class="quiz-photo" id="quiz-photo"></div>
+          <h2 id="quiz-title">Анкета</h2>
+          <p id="quiz-meta"></p>
+        </div>
+        <div id="quiz-questions"></div>
+        <button class="btn-primary" id="btn-submit-quiz" style="display:none;">Узнать результат 💖</button>
+      </div>
+    </section>
+
+    <!-- RESULT SCREEN -->
+    <section id="result" class="screen">
+      <div class="container">
+        <div class="result-card">
+          <div class="result-emoji" id="result-emoji">🏆</div>
+          <h2 id="result-title">Результат</h2>
+          <p id="result-score"></p>
+          <p id="result-comment"></p>
+          <button class="btn-primary" onclick="goTo('home')">Создать свою анкету</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
